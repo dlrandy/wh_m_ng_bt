@@ -1,0 +1,23 @@
+@media (min-width: 768px) {
+	@mixin modal-dialog-size($size){
+		width: #{$size}px;
+	}
+	#singnInModal .modal-dialog{
+		@include modal-dialog-size(450);
+		top: 50%;
+		-webkit-transform: translateY(70%);
+		   -moz-transform: translateY(70%);
+		    -ms-transform: translateY(70%);
+		     -o-transform: translateY(70%);
+		        transform: translateY(70%);
+	}
+	#signUpModal{
+		@include modal-dialog-size(450);
+			top: 50%;
+		-webkit-transform: translateY(70%);
+		   -moz-transform: translateY(70%);
+		    -ms-transform: translateY(70%);
+		     -o-transform: translateY(70%);
+		        transform: translateY(70%);
+	}
+}

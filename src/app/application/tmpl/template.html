@@ -1,0 +1,85 @@
+<div ng-controller="AppController as appCtrl">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" ui-sref="app.common">期货圈</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ui-sref-active="active"><a ui-sref="app.profile">说说</a></li>
+                    <li ui-sref-active="active"><a ui-sref="app.common.article">文章</a></li>
+                    <li ng-if="appCtrl.signed" ui-sref-active="active"><a ui-sref="app.others">发表文章</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><signinandup></signinandup></li>
+                   
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <div style="margin-top:70px;" class="container" ui-view></div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    ©版权所有&nbsp;&nbsp;&nbsp;上海文华财经资讯股份有限公司&nbsp;&nbsp;&nbsp;ICP
+    证号：沪B2-20110035&nbsp;&nbsp;&nbsp;<img ng-src="{{appCtrl.footerIcon}}"
+                                          width="18" height="20" alt=""/>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="text-muted">文华产品研发二部技术支持</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+        <div ng-controller="SignInAndUpController as signInAndUpCtrl" class="modal fade" id="singnInModal" tabindex="-1" role="dialog" aria-labelledby="q-login-label">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="q-login-label">期货圈登录</h4>
+      </div>
+      <div class="modal-body">
+      <form>
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                <input ng-model="signInAndUpCtrl.user.phone" type="text" class="form-control" placeholder="文华ID / 昵称" aria-describedby="sizing-addon1">
+            </div>
+        </div>   
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">
+                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+                <input ng-model="signInAndUpCtrl.user.password" type="text" class="form-control" placeholder="密码" aria-describedby="sizing-addon1">
+            </div>
+        </div>
+      </form>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" ng-click="signInAndUpCtrl.signIn()">登录</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal12" style="display: none;">
+        <div class="center22">
+            <!-- <img alt="" src="../loader4.gif"> -->
+        </div>
+</div>

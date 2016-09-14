@@ -15,7 +15,6 @@ module.exports = function (options) {
 	var config = _.merge({}, {
 		entry: {
 			vendor: [
-                'font-awesome/css/font-awesome.min.css',
                 'bootstrap/dist/css/bootstrap.min.css',
                 'bootstrap/dist/css/bootstrap-theme.min.css',
                 'jquery',
@@ -25,14 +24,14 @@ module.exports = function (options) {
                 'angular-animate',
                 'angular-aria',
                 'angular-ui-router',
-                'angular-strap/dist/angular-strap.min.js',
-                'angular-strap/dist/angular-strap.tpl.min.js'
+                'bootstrap/dist/js/bootstrap.js'
 			]
 		},
 		output: {
-			path: path.resolve(__dirname, '../', 'build'),
+			path: path.resolve(__dirname, '../', 'static'),/*'build'*/
 			filename: 'js/[name]-[hash].js',
-			publicPath: '/'
+            chunkFilename: 'js/[chunkhash].js',
+			publicPath: '/static'
 		},
 		plugins: [
 			new webpack.HotModuleReplacementPlugin(),
@@ -61,6 +60,8 @@ module.exports = function (options) {
  				{
                     test: /\.html$/,
                     exclude: `${path.join(__dirname, "../src/assets/index.html")}`,
+                    //ReferenceError: window is not defined html-webpack-plugin
+
                     loader: 'ngtemplate?' + (path.resolve(__dirname, '../src')) + '/!html'
                 },
                 {
@@ -71,16 +72,13 @@ module.exports = function (options) {
                     test: /\.css$/,
                     loader: 'style-loader!css-loader'
                 },
+                { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
+                { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
+                { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
+                { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+                { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
                 {
-                    test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                    loader: 'url-loader?name=assets/[hash][name].[ext]&limit=10000&mimetype=application/font-woff'
-                },
-                {
-                    test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-                    loader: 'file-loader?name=assets/[hash][name].[ext]'
-                },
-                {
-                    test: /\.jpg|\.png|\.mp3/,
+                    test: /\.(png|jpg|gif)/,
                     loader: 'file-loader?name=assets/[hash][name].[ext]'
                 }
 

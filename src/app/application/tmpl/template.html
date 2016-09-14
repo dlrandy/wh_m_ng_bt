@@ -1,4 +1,4 @@
-<div ng-controller="AppController as appCtrl">
+<div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -8,11 +8,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" ui-sref="app.common">期货圈</a>
+                <a class="navbar-brand" ui-sref="app.common.talksay">期货圈</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li ui-sref-active="active"><a ui-sref="app.profile">说说</a></li>
+                    <li ui-sref-active="active"><a ui-sref="app.common.talksay">说说</a></li>
                     <li ui-sref-active="active"><a ui-sref="app.common.article">文章</a></li>
                     <li ng-if="appCtrl.signed" ui-sref-active="active"><a ui-sref="app.others">发表文章</a></li>
                 </ul>

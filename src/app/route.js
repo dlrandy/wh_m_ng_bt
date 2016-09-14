@@ -2,8 +2,9 @@ import talksayTemplate from './talksay/tmpl/template.html';
 import articleTemplate from './article/tmpl/template.html';
 import settingTemplate from './setting/tmpl/template.html';
 import infoTemplate from './info/tmpl/template.html';
+import common3_1 from './layout/common3-1/index.html';
 import applicationTemplate from './application/tmpl/template.html'
-
+import applicationController from './application/controllers/controller';
 // routing.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 export default function routing (
 	$stateProvider, $urlRouterProvider, $locationProvider) {
@@ -18,10 +19,9 @@ export default function routing (
 		.state('app', {
 			url: '',
 			abstract: true,
-			// template: applicationTemplate
 			templateUrl: applicationTemplate,
-			// controller: applicationController
-			// controller: 'appCtrl'
+			controller: applicationController,
+			controllerAs: 'appCtrl',
 			resolve: {
 				// guest: userModel.guestLogin()
 			}
@@ -29,6 +29,10 @@ export default function routing (
 		//common part
 		.state('app.common', {
 			url: '/common',
+			templateUrl: common3_1
+		})
+		.state('app.common.talksay', {
+			url: '/talksay',
 			templateUrl: talksayTemplate
 		})
 		.state('app.common.article', {

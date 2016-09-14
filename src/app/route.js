@@ -5,6 +5,7 @@ import infoTemplate from './info/tmpl/template.html';
 import common3_1 from './layout/common3-1/index.html';
 import applicationTemplate from './application/tmpl/template.html'
 import applicationController from './application/controllers/controller';
+
 // routing.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 export default function routing (
 	$stateProvider, $urlRouterProvider, $locationProvider) {
@@ -23,7 +24,9 @@ export default function routing (
 			controller: applicationController,
 			controllerAs: 'appCtrl',
 			resolve: {
-				// guest: userModel.guestLogin()
+				guest: function(userModel){
+					userModel.guestLogin();
+				}
 			}
 		})
 		//common part

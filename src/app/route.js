@@ -8,7 +8,8 @@ import applicationController from './application/controllers/controller';
 
 // routing.$inject = ['$stateProvider', '$urlRouterProvider', '$locationProvider'];
 export default function routing (
-	$stateProvider, $urlRouterProvider, $locationProvider) {
+	$stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+	$httpProvider.interceptors.push('loadingInterceptor');
 	$locationProvider.html5Mode({
 		enabled: true,
 		requireBase: false

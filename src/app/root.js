@@ -16,22 +16,37 @@ import angularCookies from 'angular-cookies';
 import routes from './route';
 import app from './application/app.module';
 // import talksay from './talksay/talksay.module';
-
+import loadingService from './application/services/LoadingService';
 
 
 angular.module('main', [angularUIRouter, angularAnimate, angularCookies, app])
     .config(routes)
-    .run(['$rootScope', ($root) => {
+    .service('loadingService', loadingService)
+    .factory('loadingInterceptor', function (loadingService) {
+        var loadingInterceptor = {
+            request: function (config) {
+                loadingService.setLoading(true);
+                return config;
+            },
+            response: function (response) {
+                loadingService.setLoading(false);
+                return response;
+            }
+        };
+        return loadingInterceptor;
+    })
+    .run(['$rootScope', 'loadingService', ($root, loadingService) => {
         $root.$on('$stateChangeStart', (e, newUrl, oldUrl) => {
-            if (newUrl !== oldUrl) {
-                $root.loadingView = true;
+            if (newUrl !== oldUrl){
+                    loadingService.setLoading(true);
+
             }
         });
         $root.$on('$stateChangeSuccess', () => {
-            $root.loadingView = false;
+                loadingService.setLoading(false);
         });
         $root.$on('$stateChangeError', () => {
-            $root.loadingView = false;
+            loadingService.setLoading(false);
         });
 
     }]);

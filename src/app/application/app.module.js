@@ -5,6 +5,7 @@ import signInAndUp from './directives/signInAndUp.directive';
 import userModel from './models/userModel';
 
 
+
 export default angular.module('app', [])
 	.controller('SignInAndUpController', SignInAndUpController)
 	.directive('signinandup', () => new signInAndUp())

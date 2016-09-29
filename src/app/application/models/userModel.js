@@ -1,7 +1,8 @@
  /*@ngInject*/
  export default class UserModel{
-	constructor($http){
+	constructor($http, transformRequestAsFormPostService){
 		this.$http = $http;
+		this.transformRequestAsFormPostService = transformRequestAsFormPostService;
 
  	}
  	signIn(user){

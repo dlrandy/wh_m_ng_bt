@@ -1,36 +1,73 @@
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">欢迎加入小圈子</h3>
-  </div>
-  <div class="panel-body">
-    <div class="flex-container">
-  	<div ng-repeat="item in talksayCtrl.circleList" class="flex-item">
-  		<img ng-src="{{item.icon}}">
-  		<div>{{item.name}}{{item.nickName}}
-  		{{item.remark}}
-  		{{item.weibocount}}
-  		{{item.yesterday}}
-  		</div>
-  	</div>
-  </div>
-  </div>
+    <div class="panel-heading">
+        <h3 class="panel-title">欢迎加入小圈子</h3>
+    </div>
+    <div class="panel-body">
+        <div class="flex-container">
+            <div ng-repeat="item in talksayCtrl.circleList" class="flex-item circle">
+                <img class="circleImg" ng-src="{{item.icon}}">
+                <div class="circleIntro">
+                    <h5 style="text-align: center;">
+                       {{item.name}}圈
+                    </h5>
+                    <div>
+                        简介: <span>{{item.remark}}</span>
+                    </div>
+                    <div>
+                        创建者: <span>{{item.nickName}} </span>
+                    </div>
+                    <div>
+                        热度: <span> {{item.yesterday}}</span>
+                    </div>
+                    <div>
+                        说说: <span> {{item.weibocount}} 条</span>
+                    </div>
+                    <div>
+                        成员: <span> {{item.membercount}} 人</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div>
-
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">全部说说</a></li>
-    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">关注的说说</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">发表说说</a></li>
-  </ul>
-
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">...</div>
-    <div role="tabpanel" class="tab-pane" id="profile">...</div>
-    <div role="tabpanel" class="tab-pane" id="messages"><editor></editor></div>
-
-  </div>
-
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">全部说说</a></li>
+        <li role="presentation"><a href="#profile" ng-click="talksayCtrl.getUserAttWeiboList()" aria-controls="profile" role="tab" data-toggle="tab">关注的说说</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">发表说说</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <ul class="list-group">
+                <li ng-repeat="item in talksayCtrl.talksayListData" class="list-group-item">
+                    <div ng-if="item.Repost">
+                        {{item.Repost}}
+                    </div>
+                    <div ng-if="!item.Repost">
+                        {{item.Weibo}}
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="profile">
+            <ul class="list-group">
+                <li ng-repeat="item in talksayCtrl.talksayListAttData" class="list-group-item">
+                    <div ng-if="item.Repost">
+                        {{item.Repost}}
+                    </div>
+                    <div ng-if="!item.Repost">
+                        {{item.Weibo}}
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="messages">
+            <div>
+                <editor></editor>
+                <p><a class="btn btn-primary btn-lg pull-right" href="#" role="button">发表说说</a></p>
+            </div>
+        </div>
+    </div>
 </div>
-

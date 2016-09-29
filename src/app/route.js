@@ -66,6 +66,15 @@ export default function routing(
                     return circleModel.getCircleList().then( (result) => {
                         return result.data.ResultData;
                     })
+                },
+                talksayList: (weiboModel,checkGuestService) => {
+                    let guest = checkGuestService.ifGuest();
+                    return guest ? weiboModel.getGuestTalksayList().then((result) => {
+                            return result.data.ResultData;
+                        }) :
+                        weiboModel.getUserAllTalksayList().then(function (result) {
+                            return result.data.ResultData;
+                        });                
                 }
             }
         })

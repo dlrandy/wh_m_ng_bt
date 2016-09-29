@@ -53,6 +53,7 @@ module.exports = function (options) {
 				app: pathApp('app.js'),
 		    	assets: pathApp('assets'),
 				jquery: 'jquery/dist/jquery.min.js',
+                $: 'jquery/dist/jquery.min.js',
 			}
 	    },
 	    module: {
@@ -72,14 +73,22 @@ module.exports = function (options) {
                     test: /\.css$/,
                     loader: 'style-loader!css-loader'
                 },
-                { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-                { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
-                { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
-                { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
-                { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
+                 { 
+                test: /\.(gif|jpg|png|woff|woff2|svg|eot|ttf)\??.*$/, 
+                loader: 'url-loader?limit=50000&name=[path][name].[ext]'
+                },
+                // { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
+                // { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/font-woff" },
+                // { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
+                // { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
+                // { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml" },
+                // {
+                //     test: /\.(png|jpg|gif)/,
+                //     loader: 'file-loader?name=assets/[hash][name].[ext]'
+                // },
                 {
-                    test: /\.(png|jpg|gif)/,
-                    loader: 'file-loader?name=assets/[hash][name].[ext]'
+                    test: /\.(json)/,
+                    loader: 'json-loader'
                 }
 
 	    	],

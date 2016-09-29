@@ -6,7 +6,7 @@ export default class LoadingService {
         this.$rootScope = $rootScope;
     }
     setLoading(loading) {
-        console.log(this.$rootScope, this.$rootScope.loadingView,'dfdfdfdfdfffffff')
+        console.log(this.$rootScope, this.$rootScope.loadingView,'loadingdfdfdfdfdfffffff')
         this.$rootScope.loadingView = loading;
     }
 }

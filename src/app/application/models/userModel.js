@@ -24,4 +24,17 @@
  	guestLogin(){
  		return this.$http.get('/api/guest/Login')
  	}
+ 	getGuestInteretedPeople( circle_id = 0, page = 1) {
+ 		return this.$http.post('/api/guest/GetRecommendUserList', {
+ 			iscircle: circle_id,
+ 			page: page,
+ 			withCredentials : true
+ 		})
+ 	}
+ 	getUserInteretedPeople( circle_id = 0, page = 1) {
+ 		return this.$http.post('/api/Users/GetRecommendUserList', {
+ 			iscircle: circle_id,
+ 			page: page
+ 		})
+ 	}
 }

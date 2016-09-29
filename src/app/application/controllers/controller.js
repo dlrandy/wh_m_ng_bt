@@ -11,7 +11,7 @@ export default class AppController {
         this.$scope.$on('userNotAuthenticated', () => {
         	this.signed = false;
         });
-		$cookies.get('guest')? this.signed= false: this.signed= true;
+		$cookies.get('guest')? this.signed= false: $cookies.get('token') ?this.signed= true:this.signed= false;
 	}
 }
 AppController.$inject = ['$scope','userModel','$cookies'];

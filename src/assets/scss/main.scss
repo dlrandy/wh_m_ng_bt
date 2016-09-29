@@ -1,3 +1,22 @@
+.affix {
+top: 0;
+  width: 100%;
+  background-color: yellow;
+}
+
+.affix-top {
+  width: 100%;
+  top: 0;
+  background-color: red;
+}
+
+.affix-bottom {
+  position: absolute;
+  width: 100%;  
+  background-color: green;
+}
+
+
 @media (min-width: 768px) {
 	@mixin modal-dialog-size($size){
 		width: #{$size}px;
@@ -21,6 +40,7 @@
 		        transform: translateY(70%);
 	}
 }
+
 .loading{
 	overflow: hidden;
 }

@@ -7,7 +7,32 @@
 		     -o-transition: all .5s ease;
 		        transition: all .5s ease;
 	}
-	input:focus{
-		width: 200px;
+
+}
+
+@media (max-width: 992px) and (min-width: 600px) {
+.signInAndUpDirective .search {
+	input:focus {
+    width: 170px;
 	}
+	
+}
+}
+
+@media (max-width: 600px) {
+.signInAndUpDirective .search {
+	input:focus {
+    width: 230px;
+	}
+	
+}
+}
+
+@media (min-width: 992px)  {
+.signInAndUpDirective .search {
+	input:focus {
+    width: 200px;
+	}
+	
+}
 }

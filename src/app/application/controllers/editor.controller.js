@@ -1,5 +1,5 @@
 import userIcon from '../../../assets/imgs/5.gif';
-export default class SignInAndUp {
+export default class Editor {
 	constructor($scope,$location, userModel, $rootScope, $cookies,checkGuestService){
 		this.signed = false;
 		this.$location = $location;
@@ -51,4 +51,4 @@ export default class SignInAndUp {
 			});
 	}
 }
-SignInAndUp.$inject = ['$scope','$location','userModel','$rootScope','$cookies','checkGuestService'];
+Editor.$inject = ['$scope','$location','userModel','$rootScope','$cookies','checkGuestService'];

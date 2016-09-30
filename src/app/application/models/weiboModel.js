@@ -2,6 +2,7 @@
  export default class WeiboModel{
 	constructor($http, transformRequestAsFormPostService){
 		this.$http = $http;
+            console.log(transformRequestAsFormPostService)
 		this.transformRequestAsFormPostService = transformRequestAsFormPostService;
  	}
  	getRecommendWeiboList(_obj) {
@@ -32,11 +33,38 @@
  		return this.$http({
  			method: 'post',
  			url: '/api/weibo/ShoushouTimeline',
+                  headers:{'Content-Type': 'application/x-www-form-urlencoded'},
  			transformRequest: this.transformRequestAsFormPostService.transform.bind(this.transformRequestAsFormPostService),
  			data:{
             	page: _obj.page|| 1,
  			}
  		})
  	}
+      getCircleWeibo({page, circle} = {}) {
+            console.log(page, circle,'dfdfdfdfdf')
+            return this.$http({
+                  method: 'post',
+                  url: '/api/circle/CircleWeibo',
+                  headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+                  transformRequest: this.transformRequestAsFormPostService.transform.bind(this.transformRequestAsFormPostService),
+                  data:{
+                        param1: page.Page || 1,
+                        param2: circle || null
+                  }
+            })
+      }
+      getGuestCircleWeibo({page, circle} = {}) {
+            console.log(page, circle,'dfdfdfdfdf')
+            return this.$http({
+                  method: 'post',
+                  url: '/api/guest/CircleWeibo',
+                  headers:{'Content-Type': 'application/x-www-form-urlencoded'},
+                  transformRequest: this.transformRequestAsFormPostService.transform.bind(this.transformRequestAsFormPostService),
+                  data:{
+                        param1: page.Page || 1,
+                        param2: circle || null
+                  }
+            })
+      }
 
  }

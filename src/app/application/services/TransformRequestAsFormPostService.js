@@ -3,8 +3,10 @@ export default class TransformRequestAsFormPostService {
         this.$rootScope = $rootScope;
     }
     transform(data, getHeaders) {
-        var headers = getHeaders();
-        headers["Content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+        // var headers = getHeaders();
+        // console.log(headers)
+        // headers["content-type"] = "application/x-www-form-urlencoded; charset=utf-8";
+            // console.log(headers)
         return this.serializeData(data);
     }
     serializeData(data) {

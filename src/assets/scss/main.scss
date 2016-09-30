@@ -23,7 +23,7 @@ top: 0;
 	}
 	#singnInModal .modal-dialog{
 		@include modal-dialog-size(450);
-		top: 50%;
+		// top: 50%;
 		-webkit-transform: translateY(70%);
 		   -moz-transform: translateY(70%);
 		    -ms-transform: translateY(70%);
@@ -32,7 +32,7 @@ top: 0;
 	}
 	#signUpModal{
 		@include modal-dialog-size(450);
-			top: 50%;
+			// top: 50%;
 		-webkit-transform: translateY(70%);
 		   -moz-transform: translateY(70%);
 		    -ms-transform: translateY(70%);
